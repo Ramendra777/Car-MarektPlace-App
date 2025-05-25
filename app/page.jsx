@@ -32,7 +32,7 @@ export default async function Home() {
           </div>
 
           {/* Search Component (Client) */}
-          {/* <HomeSearch /> */}
+          <HomeSearch />
         </div>
       </section>
 
