@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { useDropzone } from "react-dropzone";
 import { useRouter } from "next/navigation";
-// import { processImageSearch } from "@/actions/home";
+import { processImageSearch } from "@/actions/home";
 import useFetch from "@/hooks/use-fetch";
 
 export function HomeSearch() {
@@ -19,12 +19,12 @@ export function HomeSearch() {
   const [isImageSearchActive, setIsImageSearchActive] = useState(false);
 
   // Use the useFetch hook for image processing
-  // const {
-  //   loading: isProcessing,
-  //   fn: processImageFn,
-  //   data: processResult,
-  //   error: processError,
-  // } = useFetch(processImageSearch);
+  const {
+    loading: isProcessing,
+    fn: processImageFn,
+    data: processResult,
+    error: processError,
+  } = useFetch(processImageSearch);
 
   // Handle process result and errors with useEffect
   useEffect(() => {
