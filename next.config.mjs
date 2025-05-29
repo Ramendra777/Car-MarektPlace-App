@@ -21,7 +21,7 @@ const nextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "frame-src 'self' https://roadsidecoder.created.app;",
+            value: "default-src 'self'; frame-src 'self' https://example.com https://ramendrasingh.vercel.app;"
           },
         ],
       },
