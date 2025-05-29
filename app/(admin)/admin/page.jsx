@@ -3,7 +3,7 @@ import { Dashboard } from "./_components/dashboard";
 
 export const metadata = {
   title: "Dashboard | CarGenie Admin",
-  description: "Admin dashboard for Vehiql car marketplace",
+  description: "Admin dashboard for CarGenie car marketplace",
 };
 
 export default async function AdminDashboardPage() {
