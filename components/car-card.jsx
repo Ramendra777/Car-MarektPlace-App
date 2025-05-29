@@ -1,61 +1,61 @@
 "use client";
 
 import { useState, useEffect } from "react";
-// import Link from "next/link";
+import Link from "next/link";
 import Image from "next/image";
 import { Heart, Car as CarIcon, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-// import { toast } from "sonner";
-// import { toggleSavedCar } from "@/actions/car-listing";
-// import { useAuth } from "@clerk/nextjs";
+import { toast } from "sonner";
+import { toggleSavedCar } from "@/actions/car-listing";
+import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
-// import useFetch from "@/hooks/use-fetch";
+import useFetch from "@/hooks/use-fetch";
 
 export const CarCard = ({ car }) => {
-//   const { isSignedIn } = useAuth();
+  const { isSignedIn } = useAuth();
   const router = useRouter();
   const [isSaved, setIsSaved] = useState(car.wishlisted);
 
   // Use the useFetch hook
-//   const {
-//     loading: isToggling,
-//     fn: toggleSavedCarFn,
-//     data: toggleResult,
-//     error: toggleError,
-//   } = useFetch(toggleSavedCar);
+  const {
+    loading: isToggling,
+    fn: toggleSavedCarFn,
+    data: toggleResult,
+    error: toggleError,
+  } = useFetch(toggleSavedCar);
 
-//   // Handle toggle result with useEffect
-//   useEffect(() => {
-//     if (toggleResult?.success && toggleResult.saved !== isSaved) {
-//       setIsSaved(toggleResult.saved);
-//       toast.success(toggleResult.message);
-//     }
-//   }, [toggleResult, isSaved]);
+  // Handle toggle result with useEffect
+  useEffect(() => {
+    if (toggleResult?.success && toggleResult.saved !== isSaved) {
+      setIsSaved(toggleResult.saved);
+      toast.success(toggleResult.message);
+    }
+  }, [toggleResult, isSaved]);
 
-//   // Handle errors with useEffect
-//   useEffect(() => {
-//     if (toggleError) {
-//       toast.error("Failed to update favorites");
-//     }
-//   }, [toggleError]);
+  // Handle errors with useEffect
+  useEffect(() => {
+    if (toggleError) {
+      toast.error("Failed to update favorites");
+    }
+  }, [toggleError]);
 
   // Handle save/unsave car
   const handleToggleSave = async (e) => {
-    // e.preventDefault();
-    // e.stopPropagation();
+    e.preventDefault();
+    e.stopPropagation();
 
-    // if (!isSignedIn) {
-    //   toast.error("Please sign in to save cars");
-    //   router.push("/sign-in");
-    //   return;
-    // }
+    if (!isSignedIn) {
+      toast.error("Please sign in to save cars");
+      router.push("/sign-in");
+      return;
+    }
 
-    // if (isToggling) return;
+    if (isToggling) return;
 
-    // // Call the toggleSavedCar function using our useFetch hook
-    // await toggleSavedCarFn(car.id);
+    // Call the toggleSavedCar function using our useFetch hook
+    await toggleSavedCarFn(car.id);
   };
 
   return (
