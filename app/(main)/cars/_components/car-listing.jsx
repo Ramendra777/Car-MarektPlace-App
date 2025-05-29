@@ -210,7 +210,44 @@ export function CarListings() {
         ))}
       </div>
 
-      
+      {/* shadcn Pagination */}
+      {pagination.pages > 1 && (
+        <Pagination className="mt-10">
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                href={getPaginationUrl(page - 1)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (page > 1) {
+                    handlePageChange(page - 1);
+                  }
+                }}
+                className={page <= 1 ? "pointer-events-none opacity-50" : ""}
+              />
+            </PaginationItem>
+
+            {paginationItems}
+
+            <PaginationItem>
+              <PaginationNext
+                href={getPaginationUrl(page + 1)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (page < pagination.pages) {
+                    handlePageChange(page + 1);
+                  }
+                }}
+                className={
+                  page >= pagination.pages
+                    ? "pointer-events-none opacity-50"
+                    : ""
+                }
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      )}
     </div>
   );
 }
