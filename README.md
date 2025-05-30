@@ -60,5 +60,6 @@ CarGenie is a full-stack AI-powered car marketplace that enables users to explor
 
 ## Screenshots
 
-> Add images or GIFs of key features like the car listing page, admin dashboard, and test drive booking.
+![Cars Section](image.png)
 
+![Admin Section](image-1.png)
